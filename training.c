@@ -604,3 +604,128 @@ void print_data(int a, int b) {
 }
 */
 
+// 도전 실전 예제 - 가로 세로 합 구하기
+/*
+int main() {
+
+	int arr[5][6] = {
+		{1,2,3,4,5}, 
+		{6,7,8,9,10}, 
+		{11,12,13,14,15}, 
+		{16,17,18,19,20}
+	};
+	
+	for (int i = 0; i < 4; i++) {
+
+		for (int j = 0; j < 5; j++) {
+
+			arr[i][5] += arr[i][j];
+			arr[4][j] += arr[i][j];
+			arr[4][5] += arr[i][j];
+
+		}
+
+	}
+
+	for (int i = 0; i < 5; i++) {
+
+		for (int j = 0; j < 6; j++) {
+
+			printf("%5d", arr[i][j]);
+		}
+		printf("\n");
+	}
+	
+	return 0;
+}
+*/
+
+
+//실습문제 5 문제 1
+
+/*
+int main() {
+
+	char arr[5][5];
+
+	for (int i = 0; i < 5; i++) {
+
+		for (int j = 0; j < 5; j++) {
+
+			if (i == j || i + j == 4) {
+
+				arr[i][j] = 'X';
+			}
+			else arr[i][j] = 'O';
+		}
+
+	}
+
+	for (int i = 0; i < 5; i++) {
+
+		for (int j = 0; j < 5; j++) {
+			printf("%c", arr[i][j]);
+
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
+
+*/
+
+//도전 실전 예제 - 프로필 교환 프로그램
+
+
+/*
+void swap(char* str, void* pta, void* ptb);
+
+
+int main() {
+
+	int age1, age2;
+	double height1, height2;
+
+	printf("첫 번째 사람의 나이와 키 입력 : ");
+	scanf("%d %lf", &age1, &height1);
+	printf("두 번째 사람의 나이와 키 입력 : ");
+	scanf("%d %lf", &age2, &height2);
+
+	swap("int", &age1, &age2);
+	swap("double", &height1, &height2);
+
+	printf("첫 번째 사람의 나이와 키 : %d, %.1lf\n", age1, height1);
+	printf("두 번째 사람의 나이와 키 : %d, %.1lf\n", age2, height2);
+
+	return 0;
+}
+
+
+void swap(char* str, void* pta, void* ptb) {
+
+	if (strcmp(str, "int") == 0) {
+
+		int temp;
+
+		temp = *(int*)pta;
+		*(int*)pta = *(int*)ptb;
+		*(int*)ptb = temp;
+
+
+	}
+
+	else if (strcmp(str, "double") == 0) {
+
+		double temp;
+
+		temp = *(double*)pta;
+		*(double*)pta = *(double*)ptb;
+		*(double*)ptb = temp;
+
+
+	}
+
+}
+*/
+

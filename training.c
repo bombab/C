@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 /*
 int main() {
@@ -729,3 +731,336 @@ void swap(char* str, void* pta, void* ptb) {
 }
 */
 
+
+/*
+void search_planet(char** planet, int count);
+
+
+int main() {
+
+	char* planets[] = {
+		"Mercury","Venus", "Earth",
+		"Mars", "Jupiter", "Saturn",
+		"Uranus", "Neptune", "Pluto"
+	};
+
+	int count = sizeof(planets) / sizeof(planets[0]);
+
+	search_planet(planets, count);
+
+	return 0;
+}
+
+void search_planet(char** planet, int count) {
+	
+	while (1) {
+		char temp[20] = { 0 };
+		int opt = 0;
+		printf("태양계 행성의 이름은? (영문입력, exit는 종료) ==> ");
+		gets(temp);
+		if (strcmp(temp, "exit") == 0) break;
+		for (int i = 0; i < count; i++) {
+			if (strcmp(temp, planet[i]) == 0) {
+				printf("%s은(는) %d번째 행성입니다!\n",planet[i], i + 1);
+				opt = 1;
+				break;
+			}
+
+		}
+
+		if (opt == 0) {
+			printf("%s은(는) 태양계의 행성이 아닙니다!\n",temp);
+		}
+
+
+	}
+} 
+*/
+
+/*
+int main() {
+	//생성
+	int** matrix;
+
+	int size = 4;
+	int row = 5;
+
+	matrix = (int**)malloc(size * sizeof(int*));
+
+	if (matrix == NULL) {
+		printf("메모리가 부족합니다.\n");
+		exit(1);
+	}
+
+	for (int i = 0; i < row; i++) {
+
+		matrix[i] = (int*)malloc(row * sizeof(int));
+		if (matrix[i] == NULL) {
+			printf("메모리가 부족합니다.\n");
+			exit(1);
+		}
+	}
+	//반환
+
+	for (int i = 0; i < row; i++) {
+		free(matrix[i]);
+	}
+	free(matrix);
+
+	return 0;
+}
+
+*/
+
+/*
+int main(int argc, char** argv) {
+
+	int i;
+	for (i = 0; i < argc - 1; i++) {
+
+		printf("%s\n", argv[i + 1]);
+
+	}
+
+
+}
+*/
+
+
+//도전 실전 예제 - 소수 계산 프로그램
+
+
+/*
+int PrimeNumOrNot(int num);
+
+
+int main() {
+
+	int num = 0;
+	int* ptr;
+	int test = 0;
+
+	printf("> 양수 입력 : ");
+	scanf("%d", &num);
+
+	ptr = (int*)malloc(num * sizeof(int));
+	
+	if (ptr == NULL) {
+		printf("메모리가 부족합니다.\n");
+		exit(1);
+	}
+
+	for (int i = 2; i < num; i++) {
+		test = PrimeNumOrNot(i);
+		if (test == 1) {
+			ptr[i - 1] = i;
+			printf("%5d", ptr[i-1]);
+		}
+		else
+		{
+			ptr[i - 1] = 'X';
+			printf("%5c", ptr[i - 1]);
+		}
+		if (i % 5 == 1) printf("\n");
+
+	}
+
+	
+
+
+	free(ptr);
+
+	return 0;
+}
+
+
+//소수판별 함수
+int PrimeNumOrNot(int num)  {
+
+	
+	for (int i = 2; i < num; i++) {
+		if (num % i == 0) return 0; //소수아님
+
+	}
+	return 1; //소수임
+}
+*/
+
+//실습문제 7
+
+/*
+void fill_array(double** ptr, int row, int column);
+void print_array(double** ptr, int row, int column);
+
+int main() {
+
+	int m = 0, n = 0;
+
+	double** ptr;
+
+
+	printf("Enter M, N: ");
+	scanf("%d%d", &m, &n);
+
+	ptr = (double**)malloc(m * sizeof(double*));
+		if (ptr == NULL) {
+		printf("메모리가 부족합니다.\n");
+		exit(1);
+		}
+	for (int i = 0; i < m; i++) {
+
+		ptr[i] = (double*)malloc(n * sizeof(double));
+		if (ptr[i] == NULL) {
+			printf("메모리가 부족합니다.\n");
+			exit(1);
+			}
+		}
+
+	fill_array(ptr, m, n);
+	print_array(ptr, m, n);
+
+
+	for (int i = 0; i < m; i++) {
+		free(ptr[i]);
+	}
+	free(ptr);
+
+	return 0;
+}
+
+void fill_array(double** ptr, int row, int column) {
+
+	for (int i = 0; i < row; i++) {
+
+
+
+		for (int j = 0; j < column; j++) {
+
+			ptr[i][j] = (i + 1) * (j + 1);
+		}
+
+	}
+
+
+
+}
+
+void print_array(double** ptr, int row, int column) {
+
+	for (int i = 0; i < row; i++) {
+
+
+
+		for (int j = 0; j < column; j++) {
+
+			printf("%5.1lf", ptr[i][j]);
+		}
+		printf("\n");
+	}
+}
+*/
+
+/*
+
+int main(int argc, char** argv) {
+
+
+	int len = (int)strlen(argv[2]);
+
+
+	if (strcmp(argv[1], "-p") == 0) {
+		printf("-p : %s\n", argv[2]);
+
+	}
+
+	else if (strcmp(argv[1], "-u") == 0) {
+			
+		printf("-u : ");
+		for (int i = 0; i < len; i++) {
+
+			printf("%c", toupper(argv[2][i]));
+		}
+	
+		
+	}
+	
+	else if (strcmp(argv[1], "-l") == 0) {
+		
+		printf("-l : ");
+		for (int i = 0; i < len; i++) {
+
+			printf("%c", tolower(argv[2][i]));
+		}
+	
+	}
+	else {
+
+		printf("잘못 입력하였습니다.\n");
+		exit(1);
+	}
+
+	return 0;
+}
+*/
+
+
+/*
+#define MAX 100
+#define LINE 10
+
+int getline(char* pt, int max);
+void revline(char* pt);
+
+
+int main(void)
+{
+	char* line[10];
+	char buf[100];
+	int num = 0;
+	printf("문장을 입력하시오 (종료하려면 라인의 첫문자로 엔터를 칠 것)...\n");
+	while (getline(buf, MAX) != 0) // getline(): 한 라인을 읽어서 buf에 저장함
+	{
+		
+		line[num] = (char*)malloc((strlen(buf) + 1)*sizeof(char)); // 빈 칸 채우기
+		strcpy(line[num],buf); // 빈 칸 채우기
+		num++;
+	}
+
+
+
+
+	printf("\n입력한 문장의 역순 출력 결과...\n");
+	for (int i = 0; i < num; i++) // 빈 칸 채우기
+	{		
+		revline(line[i]); // revline(): 한 라인의 문장을 뒤집음
+		printf("%s\n", line[i]);
+
+	}
+	return 0;
+}
+
+int getline(char* pt, int max) {
+
+	fgets(pt,sizeof(char)*max,stdin);
+	if (pt[0] == '\n') return 0;
+	else {
+		pt[strlen(pt) - 1] = '\0';
+		return 1;
+	}
+}
+
+
+void revline(char* pt) {
+
+	int strnum = strlen(pt);
+	char temp;
+
+	for (int i = 0; i < strnum / 2; i++) {
+		temp = pt[i];
+		pt[i] = pt[strnum - i - 1];
+		pt[strnum - i - 1] = temp;
+
+	}
+
+}
+*/

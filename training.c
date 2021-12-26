@@ -1064,3 +1064,279 @@ void revline(char* pt) {
 
 }
 */
+
+/*
+struct marriage
+{
+	char name[20];
+	int age;
+	char sex;
+	double height;
+};
+
+struct marriage m1 = { "Andy",22,'m',187.5 };
+struct marriage* mp = &m1;
+
+int main() {
+
+	printf("이름 : %s\n", mp->name);
+	printf("나이 : %d\n", mp->age);
+	printf("성별 : %c\n", mp->sex);
+	printf("키 : %.1lf\n", mp->height);
+
+	return 0;
+}
+
+*/
+
+/*
+typedef struct train Train;
+
+struct train
+{
+	int seats;
+	Train* next;
+};
+
+
+int main() {
+
+	Train* head = NULL, * tail = NULL;
+	int i;
+	for (i = 0; i < 5; i++) {
+
+		if (head == NULL)
+		{
+			head = tail = (Train*)malloc(sizeof(Train));
+
+		}
+		else
+		{
+			tail->next = (Train*)malloc(sizeof(Train));
+			tail = tail->next;
+		}
+
+
+	}
+	return 0;
+}
+*/
+
+
+// 도전 실전 예제 - 성적 처리 프로그램
+
+
+/*
+typedef struct {
+
+	int stnum;
+	char name[20];
+	int kor;
+	int eng;
+	int math;
+	int total;
+	double ave;
+	char score;
+
+} Score;
+
+void SortArray(Score* pt);
+
+int main() {
+
+	Score student[5];
+	Score* pt = student;
+
+	for (int i = 0; i < sizeof(student)/sizeof(student[0]); i++) {
+
+		printf("학번 : ");
+		scanf("%d", &pt[i].stnum);
+		printf("이름 : ");
+		scanf("%s", pt[i].name);
+		printf("국어, 영어, 수학 점수 : ");
+		scanf("%d%d%d", &pt[i].kor, &pt[i].eng, &pt[i].math);
+		(pt + i)->total = (pt + i)->kor + (pt + i)->eng + (pt + i)->math;
+		(pt + i)->ave = (double)(pt + i)->total / 3;
+		if ((pt + i)->ave >= 90) {
+
+			(pt + i)->score = 'A';
+		}
+		else if ((pt + i)->ave >= 80) {
+
+			(pt + i)->score = 'B';
+
+		}
+		else if ((pt + i)->ave >= 70) {
+
+			(pt + i)->score = 'C';
+		}
+		else {
+
+			(pt + i)->score = 'F';
+		}
+
+
+	}
+	printf("# 정렬 전 데이터...\n");
+	for (int i = 0; i < sizeof(student) / sizeof(student[0]); i++) {
+
+		printf("%6d%5s%5d%5d%5d%5d%6.1lf%5c\n", pt[i].stnum, pt[i].name, 
+			pt[i].kor, pt[i].eng, pt[i].math, 
+			pt[i].total, pt[i].ave, pt[i].score);
+	}
+	
+	printf("# 정렬 후 데이터...\n");
+
+	SortArray(pt);
+
+	for (int i = 0; i < sizeof(student) / sizeof(student[0]); i++) {
+
+		printf("%6d%5s%5d%5d%5d%5d%6.1lf%5c\n", pt[i].stnum, pt[i].name, 
+			pt[i].kor, pt[i].eng, pt[i].math, 
+			pt[i].total, pt[i].ave, pt[i].score);
+
+
+	}
+
+
+
+
+	return 0;
+}
+
+void SortArray(Score* pt) {
+	for (int i = 0; i < 4; i++) {
+		Score* max = &pt[i];
+
+		for (int j = i+1; j < 5; j++) {
+
+			if (max->total < pt[j].total) {
+
+				max = pt + j;
+			}
+
+		}
+		Score temp = pt[i];
+		pt[i] = *max;
+		*max = temp;
+	}
+
+}
+*/
+
+
+// 실습문제 8
+/*
+struct profile {
+
+	char name[20];
+	double grade;
+	int english;
+
+};
+
+void input_data(struct profile*); //구조체 변수에 데이터 입력
+void elite(struct profile*); // 엘리튼 사원을 출력하는 함수 원형
+
+int main() {
+
+	struct profile new_staff[5];
+
+	input_data(new_staff);
+	elite(new_staff);
+
+	return 0;
+}
+
+
+void input_data(struct profile* pt) {
+
+	printf("이름, 학점, 영어 점수를 입력하세요.\n");
+
+	for (int i = 0; i < 5; i++) {
+
+		scanf("%s%lf%d", pt[i].name, &pt[i].grade, &pt[i].english);
+	}
+
+}
+
+
+void elite(struct profile *pt) {
+
+	printf("-------elite 사원 명단 ------\n");
+	for (int i = 0; i < 5; i++) {
+
+		if (pt[i].grade >= 4.0 && pt[i].english >= 900) {
+
+			printf("%s, %.1lf, %d\n",pt[i].name,pt[i].grade,pt[i].english);
+		}
+
+	}
+}
+*/
+
+/*
+typedef struct train Train;
+
+struct train
+{
+	int number;
+	int seat;
+	Train* next;
+};
+
+void print_train(Train* pt);
+
+int main() {
+
+	Train* head = NULL, * tail = NULL;
+	int i;
+	int train_seats[5] = { 20,40,40,40,30 };
+
+	for (i = 0; i < 5; i++) {
+		
+		if (head == NULL) {
+
+			head = tail = (Train*)malloc(sizeof(Train));
+			if (head == NULL) {
+				printf("메모리가 부족합니다!!\n");
+				exit(1);
+			}
+			head->number = i + 1; //객차번호는 1부터 시작
+			head->seat = train_seats[i];
+		}
+		else {
+
+			tail->next = (Train*)malloc(sizeof(Train));
+			if (tail->next == NULL) {
+				printf("메모리가 부족합니다!!\n");
+				exit(1);
+			}
+			tail = tail->next;
+			tail->number = i + 1;
+			tail->seat = train_seats[i];
+			tail->next = NULL;
+
+
+		}
+
+	}
+	print_train(head);
+
+	return 0;
+}
+
+void print_train(Train* tp) {
+
+	for (int i = 0; i < 4; i++) {
+
+		printf("[%d번객차,좌석수:%d]->", i + 1, tp->seat);
+		tp = tp->next;
+	}
+	printf("[5번객차,좌석수:%d)]\n",tp->seat);
+
+}
+
+*/
+
+

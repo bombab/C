@@ -1,8 +1,10 @@
+// ìë£Œêµ¬ì¡°ì™€ ì•Œê³ ë¦¬ì¦˜
+
 #include <stdio.h>
 #include <time.h>
 #define SIZE 5
 
-// 1¹ø
+// 1ë²ˆ
 
 /* 
 float farray[SIZE];
@@ -32,9 +34,9 @@ int main() {
 
 
 
-// 2¹ø
+// 2ë²ˆ
 
-// ¾Ë°í¸®Áò A
+// ì•Œê³ ë¦¬ì¦˜ A
 
 /*
 int main() {
@@ -43,7 +45,7 @@ int main() {
 	clock_t start, end;
 	float res;
 
-	printf("n ÀÔ·Â : ");
+	printf("n ì…ë ¥ : ");
 	scanf("%d", &n);
 
 
@@ -54,14 +56,14 @@ int main() {
 	end = clock();
 	res = (float)(end - start) / CLOCKS_PER_SEC;
 
-	printf("½ÇÇà ½Ã°£: %.2f\n", res);
+	printf("ì‹¤í–‰ ì‹œê°„: %.2f\n", res);
 
 	return 0;
 }
 */
 
 /*
-// ¾Ë°í¸®Áò B
+// ì•Œê³ ë¦¬ì¦˜ B
 
 int main() {
 	int n;
@@ -69,7 +71,7 @@ int main() {
 	clock_t start, end;
 	float res;
 
-	printf("n ÀÔ·Â : ");
+	printf("n ì…ë ¥ : ");
 	scanf("%d", &n);
 
 	start = clock();
@@ -81,12 +83,12 @@ int main() {
 	end = clock();
 	res = (float)(end - start) / CLOCKS_PER_SEC;
 
-	printf("½ÇÇà ½Ã°£: %.6f\n", res);
+	printf("ì‹¤í–‰ ì‹œê°„: %.6f\n", res);
 	return 0;
 }
 */
 
-// ¾Ë°í¸®Áò C
+// ì•Œê³ ë¦¬ì¦˜ C
 /*
 int main() {
 	int n;
@@ -94,7 +96,7 @@ int main() {
 	clock_t start, end;
 	float res;
 
-	printf("n ÀÔ·Â : ");
+	printf("n ì…ë ¥ : ");
 	scanf("%d", &n);
 
 	start = clock();
@@ -106,11 +108,11 @@ int main() {
 	end = clock();
 	res = (float)(end - start) / CLOCKS_PER_SEC;
 	
-	printf("½ÇÇà ½Ã°£: %.6f\n", res);
+	printf("ì‹¤í–‰ ì‹œê°„: %.6f\n", res);
 	return 0;
 }*/
 
-// 3¹ø
+// 3ë²ˆ
 
 
 int main() {
@@ -121,7 +123,7 @@ int main() {
 	while (1) {
 
 
-		// ÇÁ·Î±×·¥ A
+		// í”„ë¡œê·¸ë¨ A
 		mul = 1;
 		start1 = clock();
 		for (int i = 0; i < n; i++)
@@ -131,7 +133,7 @@ int main() {
 
 		res1 = (float)(end1 - start1)/ CLOCKS_PER_SEC;
 
-		// ÇÁ·Î±×·¥ B
+		// í”„ë¡œê·¸ë¨ B
 		mul = 1;
 		start2 = clock();
 		for (int i = 0; i < n; i++)
@@ -148,7 +150,7 @@ int main() {
 
 	}
 
-	printf("nÀÌ %d ÀÌ»óÀÌ¾î¾ß ÇÁ·Î±×·¥ B°¡ ½Ã°£ÀÌ ´õ °É¸°´Ù.\n", n);
+	printf("nì´ %d ì´ìƒì´ì–´ì•¼ í”„ë¡œê·¸ë¨ Bê°€ ì‹œê°„ì´ ë” ê±¸ë¦°ë‹¤.\n", n);
 
 	return 0;
 }

@@ -1,4 +1,4 @@
-//순환
+//2. 순환
 
 #include <stdio.h>
 

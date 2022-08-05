@@ -1,3 +1,5 @@
+//3. ë°°ì—´, êµ¬ì¡°ì²´, í¬ì¸í„°
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -31,19 +33,19 @@ int main() {
 */
 
 
-// ¿¹Á¦ 3.2 ´ÙÇ×½Ä µ¡¼À ÇÁ·Î±×·¥ 1
+// ì˜ˆì œ 3.2 ë‹¤í•­ì‹ ë§ì…ˆ í”„ë¡œê·¸ë¨ 1
 /*
 #define MAX(a,b) (((a)>(b))? (a): (b))
 #define MAX_DEGREE 101
 typedef struct {
-	int degree; // ´ÙÇ×½Ä ÃÖ°í Â÷¼ö
-	float coef[MAX_DEGREE]; // ´ÙÇ×½ÄÀÇ °è¼ö
+	int degree; // ë‹¤í•­ì‹ ìµœê³  ì°¨ìˆ˜
+	float coef[MAX_DEGREE]; // ë‹¤í•­ì‹ì˜ ê³„ìˆ˜
 } polynomical;
 
-// C = A + B ¿©±â¼­ A¿Í B´Â ´ÙÇ×½Ä, ±¸Á¶Ã¼°¡ ¹İÈ¯
+// C = A + B ì—¬ê¸°ì„œ Aì™€ BëŠ” ë‹¤í•­ì‹, êµ¬ì¡°ì²´ê°€ ë°˜í™˜
 polynomical poly_add1(polynomical A, polynomical B) {
 	polynomical C;
-	int Apos = 0, Bpos = 0, Cpos = 0; // ¹è¿­ ÀÎµ¦½º º¯¼ö
+	int Apos = 0, Bpos = 0, Cpos = 0; // ë°°ì—´ ì¸ë±ìŠ¤ ë³€ìˆ˜
 	int degree_a = A.degree;
 	int degree_b = B.degree;
 	C.degree = MAX(A.degree, B.degree);
@@ -117,7 +119,7 @@ int main() {
 }
 */
 
-// ¿¹Á¦ 3.3 ´ÙÇ×½Ä µ¡¼À ÇÁ·Î±×·¥ 2
+// ì˜ˆì œ 3.3 ë‹¤í•­ì‹ ë§ì…ˆ í”„ë¡œê·¸ë¨ 2
 
 /*
 #include <stdio.h>
@@ -129,22 +131,22 @@ typedef struct {
 	float coef;
 	int expon;
 
-} polynomical; // ÀÚ·áÇü Á¤ÀÇ
+} polynomical; // ìë£Œí˜• ì •ì˜
 
-polynomical terms[MAX_TERMS] = { {8,3}, {7,1}, {1,0}, {10, 3}, {3, 2}, {1, 0} }; // ¹è¿­
+polynomical terms[MAX_TERMS] = { {8,3}, {7,1}, {1,0}, {10, 3}, {3, 2}, {1, 0} }; // ë°°ì—´
 int avail = 6;
 
-//µÎ °³ÀÇ Á¤¼ö¸¦ ºñ±³
+//ë‘ ê°œì˜ ì •ìˆ˜ë¥¼ ë¹„êµ
 char compare(int a, int b) {
 	if (a > b) return '>';
 	else if (a == b) return '=';
 	else return '<';
 }
 
-//»õ·Î¿î Ç×À» ´ÙÇ×½Ä¿¡ Ãß°¡
+//ìƒˆë¡œìš´ í•­ì„ ë‹¤í•­ì‹ì— ì¶”ê°€
 void attach(float coef, int expon) {
 	if (avail > MAX_TERMS) {
-		fprintf(stderr, "Ç×ÀÇ °³¼ö°¡ ³Ê¹« ¸¹½À´Ï´Ù.\n");
+		fprintf(stderr, "í•­ì˜ ê°œìˆ˜ê°€ ë„ˆë¬´ ë§ìŠµë‹ˆë‹¤.\n");
 		exit(1);
 	}
 	terms[avail].coef = coef;
@@ -158,16 +160,16 @@ void poly_add2(int As, int Ae, int Bs, int Be, int* Cs, int* Ce) {
 	*Cs = avail;
 	while (As <= Ae && Bs <= Be) {
 		switch (compare(terms[As].expon, terms[Bs].expon)) {
-		case '>': // AÀÇ Â÷¼ö > BÀÇ Â÷¼ö
+		case '>': // Aì˜ ì°¨ìˆ˜ > Bì˜ ì°¨ìˆ˜
 			attach(terms[As].coef, terms[As].expon);
 			As++;
 			break;
-		case '=': // AÀÇ Â÷¼ö == BÀÇ Â÷¼ö
+		case '=': // Aì˜ ì°¨ìˆ˜ == Bì˜ ì°¨ìˆ˜
 			tempcoef = terms[As].coef + terms[Bs].coef;
 			if (tempcoef) attach(tempcoef, terms[As].expon);
 			As++; Bs++;
 			break;
-		case '<': // AÀÇ Â÷¼ö < BÀÇ Â÷¼ö
+		case '<': // Aì˜ ì°¨ìˆ˜ < Bì˜ ì°¨ìˆ˜
 			attach(terms[Bs].coef, terms[Bs].expon);
 			Bs++;
 		}
@@ -199,7 +201,7 @@ int main() {
 
 */
 
-// ¿¹Á¦ 3.5 matrix2 Çà·Ä ÇÁ·Î±×·¥ 
+// ì˜ˆì œ 3.5 matrix2 í–‰ë ¬ í”„ë¡œê·¸ë¨ 
 
 /*
 #define MAX_TERMS 100
@@ -211,9 +213,9 @@ typedef struct {
 
 typedef struct{
 	element data[MAX_TERMS];
-	int rows; // ÇàÀÇ °³¼ö
-	int cols; // ¿­ÀÇ °³¼ö
-	int terms; // Ç×ÀÇ °³¼ö
+	int rows; // í–‰ì˜ ê°œìˆ˜
+	int cols; // ì—´ì˜ ê°œìˆ˜
+	int terms; // í•­ì˜ ê°œìˆ˜
 } SparseMatrix;
 
 
@@ -281,13 +283,13 @@ void add_matrix(int A[ROWS][COLS], int B[ROWS][COLS]) {
 			C[i][j] = A[i][j] + B[i][j];
 }*/
 
-// ¿¹Á¦ 3.7
+// ì˜ˆì œ 3.7
 
 /*
 #define SIZE 6
 
 void get_integers(int list[]) {
-	printf("6°³ÀÇ Á¤¼ö¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
+	printf("6ê°œì˜ ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
 	for (int i = 0; i < SIZE; i++) {
 		scanf("%d", &list[i]);
 	}
@@ -305,12 +307,12 @@ int main() {
 
 	int list[SIZE];
 	get_integers(list);
-	printf("ÇÕ = %d \n", cal_sum(list));
+	printf("í•© = %d \n", cal_sum(list));
 	
 	return 0;
 }*/
 
-// ¿¬½À¹®Á¦ 04
+// ì—°ìŠµë¬¸ì œ 04
 /*
 int main() {
 
@@ -332,7 +334,7 @@ int main() {
 	return 0;
 }*/
 
-// ¿¬½À¹®Á¦ 05
+// ì—°ìŠµë¬¸ì œ 05
 /*
 typedef struct {
 	char name[100];
@@ -340,7 +342,7 @@ typedef struct {
 	float salary;
 } person; */
 
-// ¿¬½À¹®Á¦ 06
+// ì—°ìŠµë¬¸ì œ 06
 /*
 typedef struct {
 	float real;
@@ -350,7 +352,7 @@ typedef struct {
 
 complex c1, c2;
 
-// ¿¬½À¹®Á¦ 07
+// ì—°ìŠµë¬¸ì œ 07
 
 complex complex_add(complex a, complex b) {
 
@@ -362,7 +364,7 @@ complex complex_add(complex a, complex b) {
 	return result;
 }*/
 
-//¿¬½À¹®Á¦ 08
+//ì—°ìŠµë¬¸ì œ 08
 /*
 int items;
 
@@ -375,7 +377,7 @@ void insert(int array[], int loc, int value) {
 	items++;
 }*/
 
-// ¿¬½À¹®Á¦ 10
+// ì—°ìŠµë¬¸ì œ 10
 /*
 int items;
 
@@ -392,7 +394,7 @@ int delete(int array[], int loc) {
 }
 */
 
-// ¿¬½À¹®Á¦ 12
+// ì—°ìŠµë¬¸ì œ 12
 /*
 typedef struct {
 	int a;
@@ -403,7 +405,7 @@ int main() {
 
 	temp* pt = (temp*)malloc(sizeof(temp));
 	if (pt == NULL) {
-		printf("¸Ş¸ğ¸®°¡ ºÎÁ·ÇÕ´Ï´Ù.\n");
+		printf("ë©”ëª¨ë¦¬ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.\n");
 		exit(1);
 	}
 
@@ -415,7 +417,7 @@ int main() {
 	return 0;
 } */
 
-// ÇÁ·Î±×·¡¹Ö ÇÁ·ÎÁ§Æ®
+// í”„ë¡œê·¸ë˜ë° í”„ë¡œì íŠ¸
 
 // 01 -1
 /*
@@ -424,7 +426,7 @@ int main() {
 	int day[12] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31 };
 
 	for (int i = 1; i < 13; i++) {
-		printf("%d¿ùÀº %d±îÁö ÀÖ½À´Ï´Ù.\n", i, day[i - 1]);
+		printf("%dì›”ì€ %dê¹Œì§€ ìˆìŠµë‹ˆë‹¤.\n", i, day[i - 1]);
 	}
 
 	return 0;
@@ -474,7 +476,7 @@ int main() {
 		if (min > a[i]) min = a[i];
 	}
 
-	printf("ÃÖ´ñ°ª: %.1f, ÃÖ¼Ú°ª: %.1f\n", max, min);
+	printf("ìµœëŒ“ê°’: %.1f, ìµœì†Ÿê°’: %.1f\n", max, min);
 	return 0;
 }
 */
@@ -516,19 +518,19 @@ int list[LIST_SIZE] = { 23, 45, 12, 34, 65, 25, 89, 61, 26, 11 };
 int main() {
 	int i;
 	for (i = 0; i < LIST_SIZE; i++) {
-		printf("list[%d]ÀÇ ÁÖ¼Ò = %p\n", i, &list[i]);
+		printf("list[%d]ì˜ ì£¼ì†Œ = %p\n", i, &list[i]);
 	}
 
 }*/
 
 //01-6
-// °°Àº ÇàÀÌ ¸ÕÀú Ãâ·ÂµÊ
+// ê°™ì€ í–‰ì´ ë¨¼ì € ì¶œë ¥ë¨
 /*
 void printArrayAddress(int a[][3]);
 
 void main(void) {
 	int array[2][3] = { {1,2,3}, {4,5,6} };
-	printf("¹è¿­ arrayÀÇ Ãâ·Â:\n");
+	printf("ë°°ì—´ arrayì˜ ì¶œë ¥:\n");
 	printArrayAddress(array);
 }
 void printArrayAddress(int a[][3]) {
@@ -544,9 +546,9 @@ void printArrayAddress(int a[][3]) {
 /*
 #define SIZE 100;
 typedef struct {
-	char name[100]; //ÀÌ¸§
-	int student_number; //ÇĞ¹ø
-	int score; //¼ºÀû
+	char name[100]; //ì´ë¦„
+	int student_number; //í•™ë²ˆ
+	int score; //ì„±ì 
 
 } student;
 
@@ -712,7 +714,7 @@ void random_walk(present_x, present_y) {
 		else break;
 	}
 	end = clock();
-	printf("ÃÑ ÀÌµ¿ °Å¸®: %d, ¼öÇà ½Ã°£: %.8lf\n",walk_count,(double)(end-start)/CLOCKS_PER_SEC);
+	printf("ì´ ì´ë™ ê±°ë¦¬: %d, ìˆ˜í–‰ ì‹œê°„: %.8lf\n",walk_count,(double)(end-start)/CLOCKS_PER_SEC);
 
 }*/
 
@@ -728,16 +730,16 @@ void poly_add2(int As, int Ae, int Bs, int Be, int* Cs, int* Ce) {
 
 	while (As <= Ae && Bs <= Be) {
 		switch (compare(terms[As].expon, terms[Bs].expon)) {
-		case '>': // AÀÇ Â÷¼ö > BÀÇ Â÷¼ö
+		case '>': // Aì˜ ì°¨ìˆ˜ > Bì˜ ì°¨ìˆ˜
 			attach(terms[As].coef, terms[As].expon);
 			As++;
 			break;
-		case '=': // AÀÇ Â÷¼ö == BÀÇ Â÷¼ö
+		case '=': // Aì˜ ì°¨ìˆ˜ == Bì˜ ì°¨ìˆ˜
 			tempcoef = terms[As].coef + terms[Bs].coef;
 			if (tempcoef) attach(tempcoef, terms[As].expon);
 			As++; Bs++;
 			break;
-		case '<': // AÀÇ Â÷¼ö < BÀÇ Â÷¼ö
+		case '<': // Aì˜ ì°¨ìˆ˜ < Bì˜ ì°¨ìˆ˜
 			attach(terms[Bs].coef, terms[Bs].expon);
 			Bs++;
 		}

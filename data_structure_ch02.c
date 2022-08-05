@@ -1,6 +1,8 @@
+//ìˆœí™˜
+
 #include <stdio.h>
 
-//2.1. ¼øÈ¯ÀûÀÎ ÆÑÅä¸®¾ó °è»ê ÇÁ·Î±×·¥
+//2.1. ìˆœí™˜ì ì¸ íŒ©í† ë¦¬ì–¼ ê³„ì‚° í”„ë¡œê·¸ë¨
 /*
 int factorial(int n) {
 
@@ -14,7 +16,7 @@ int factorial(int n) {
 }
 */
 
-//2.2 Ãâ·Â¹®ÀÌ Ãß°¡µÈ ¼øÈ¯ÀûÀÎ ÆÑÅä¸®¾ó °è»ê ÇÁ·Î±×·¥
+//2.2 ì¶œë ¥ë¬¸ì´ ì¶”ê°€ëœ ìˆœí™˜ì ì¸ íŒ©í† ë¦¬ì–¼ ê³„ì‚° í”„ë¡œê·¸ë¨
 /*
 int factorial(int n) {
 
@@ -25,7 +27,7 @@ int factorial(int n) {
 }
 */
 
-// 2.3 ¹İº¹ÀûÀÎ ÆÑÅä¸®¾ó °è»ê ÇÁ·Î±×·¥
+// 2.3 ë°˜ë³µì ì¸ íŒ©í† ë¦¬ì–¼ ê³„ì‚° í”„ë¡œê·¸ë¨
 
 /*
 int factorial_iter(int n) {
@@ -41,7 +43,7 @@ int factorial_iter(int n) {
 }
 */
 
-//2.4 ¹İº¹ÀûÀÎ °ÅµìÁ¦°ö °è»ê ÇÁ·Î±×·¥4
+//2.4 ë°˜ë³µì ì¸ ê±°ë“­ì œê³± ê³„ì‚° í”„ë¡œê·¸ë¨4
 /*
 double slow_power(double x, int n) {
 
@@ -55,7 +57,7 @@ double slow_power(double x, int n) {
 }
 */
 
-//2.5 ¼øÈ¯ÀûÀÎ °ÅµìÁ¦°ö °è»ê ÇÁ·Î±×·¥
+//2.5 ìˆœí™˜ì ì¸ ê±°ë“­ì œê³± ê³„ì‚° í”„ë¡œê·¸ë¨
 /*
 double power(double x, int n) {
 
@@ -87,7 +89,7 @@ int sub(int n) {
 }
 */
 
-//2.6 ¼øÈ¯ÀûÀÎ ÇÇº¸³ªÄ¡ ¼ö¿­ °è»ê ÇÁ·Î±×·¥
+//2.6 ìˆœí™˜ì ì¸ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ ê³„ì‚° í”„ë¡œê·¸ë¨
 /*
 int fib(int n) {
 	if (n == 0) return 0;
@@ -97,7 +99,7 @@ int fib(int n) {
 }
 */
 
-//2.7 ¹İº¹ÀûÀÎ ÇÇº¸³ªÄ¡ ¼ö¿­ °è»ê ÇÁ·Î±×·¥
+//2.7 ë°˜ë³µì ì¸ í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ ê³„ì‚° í”„ë¡œê·¸ë¨
 
 /*
 int fib_iter(int n) {
@@ -119,15 +121,15 @@ int fib_iter(int n) {
 */
 
 
-//2.8 ÇÏ³ëÀÌÀÇ Å¾ ¹®Á¦ ÇÁ·Î±×·¥
+//2.8 í•˜ë…¸ì´ì˜ íƒ‘ ë¬¸ì œ í”„ë¡œê·¸ë¨
 
 /*
 void hanoi_tower(int n, char from, char tmp, char to) {
 
-	if (n == 1) printf("%cÀÇ ¿øÆÇ 1°³¸¦ %c·Î ¿Å±ä´Ù.\n", from, to);
+	if (n == 1) printf("%cì˜ ì›íŒ 1ê°œë¥¼ %cë¡œ ì˜®ê¸´ë‹¤.\n", from, to);
 	else {
 		hanoi_tower(n - 1, from, to, tmp);
-		printf("%cÀÇ ¿øÆÇ 1°³¸¦ %c·Î ¿Å±ä´Ù.\n", from, to);
+		printf("%cì˜ ì›íŒ 1ê°œë¥¼ %cë¡œ ì˜®ê¸´ë‹¤.\n", from, to);
 		hanoi_tower(n - 1, tmp, from, to);
 	}
 
@@ -141,7 +143,7 @@ int main() {
 }
 */
 
-// ¿¬½À¹®Á¦ 13.
+// ì—°ìŠµë¬¸ì œ 13.
 
 /*
 int sum(int n);
@@ -165,7 +167,7 @@ int sum(int n) {
 }
 */
 
-// ¿¬½À¹®Á¦ 14
+// ì—°ìŠµë¬¸ì œ 14
 /*
 double sum(int n);
 
@@ -187,7 +189,7 @@ double sum(int n) {
 }
 */
 
-// ¿¬½À¹®Á¦ 15
+// ì—°ìŠµë¬¸ì œ 15
 /*
 int fib (int n) {
 	printf("fib(%d) is called\n", n);
@@ -205,24 +207,24 @@ int main() {
 }
 */
 
-// ¿¬½À¹®Á¦ 16
+// ì—°ìŠµë¬¸ì œ 16
 /*
 int main() {
 	int n = 0, sum = 0;
-	printf("¼ıÀÚ ÀÔ·Â: ");
+	printf("ìˆ«ì ì…ë ¥: ");
 	scanf("%d", &n);
 
 	for (int i = 1; i <= n; i++) {
 		sum += i;
 	}
 
-	printf("ÇÕ: %d\n", sum);
+	printf("í•©: %d\n", sum);
 
 	return 0;
 }
 */
 
-// ¿¬½À¹®Á¦ 17
+// ì—°ìŠµë¬¸ì œ 17
 /*
 int bino_coef_sum1(int n, int k) {
 
@@ -252,7 +254,7 @@ int bino_coef_sum2(int n, int k) {
 
 }*/
 
-//¿¬½À¹®Á¦ 18
+//ì—°ìŠµë¬¸ì œ 18
 
 /*
 int Ackermann(int m, int n) {
@@ -287,14 +289,14 @@ int main() {
 	a = Ackermann(3, 2);
 	b = Ackermann(2, 3);
 
-	printf("°¢°¢ÀÇ °ª : %d , %d \n", a, b);
+	printf("ê°ê°ì˜ ê°’ : %d , %d \n", a, b);
 
 
 	return 0;
 }
 */
 
-// ¿¬½À¹®Á¦ 21
+// ì—°ìŠµë¬¸ì œ 21
 /*
 #define WHITE 0
 #define BLACK 1
@@ -321,7 +323,7 @@ char read_pixel(int x, int y) {
 void write_pixel(int x, int y, int color) {
 
 	screen[x][y] = color;
-	printf("[%d][%d] À§Ä¡¸¦ BLACKÀ¸·Î Ä¥Çß½À´Ï´Ù.\n", x, y);
+	printf("[%d][%d] ìœ„ì¹˜ë¥¼ BLACKìœ¼ë¡œ ì¹ í–ˆìŠµë‹ˆë‹¤.\n", x, y);
 }
 
 void flood_fill(int x, int y) {
@@ -344,7 +346,7 @@ int main() {
 	return 0;
 }*/
 
-// ÇÁ·Î±×·¡¹Ö ÇÁ·ÎÁ§Æ® 
+// í”„ë¡œê·¸ë˜ë° í”„ë¡œì íŠ¸ 
 
 //01
 
@@ -376,7 +378,7 @@ void display() {
 void draw_tree(int row, int left, int right) {
 
 	int mid;
-	printf("draw_tree ÇÔ¼ö È£Ãâ, ¸Å°³º¯¼ö row - %d, left - %d, right - %d \n",row, left, right);
+	printf("draw_tree í•¨ìˆ˜ í˜¸ì¶œ, ë§¤ê°œë³€ìˆ˜ row - %d, left - %d, right - %d \n",row, left, right);
 
 	if ((right - left) < 3) {
 		return;

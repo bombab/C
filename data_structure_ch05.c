@@ -1,11 +1,11 @@
-//5. Å¥
+//5. í
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
-// 5.1 ¼±ÇüÅ¥ ÇÁ·Î±×·¥
+// 5.1 ì„ í˜•í í”„ë¡œê·¸ë¨
 /*
 #define MAX_QUEUE_SIZE 5
 
@@ -16,7 +16,7 @@ typedef struct {
 	element data[MAX_QUEUE_SIZE];
 } QueueType;
 
-//¿À·ù ÇÔ¼ö
+//ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
@@ -55,7 +55,7 @@ int is_empty(QueueType* q) {
 
 void enqueue(QueueType* q, int item) {
 	if (is_full(q)) {
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 		return;
 	}
 	q->data[++(q->rear)] = item;
@@ -63,7 +63,7 @@ void enqueue(QueueType* q, int item) {
 
 int dequeue(QueueType* q) {
 	if (is_empty(q)) {
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 		return -1;
 	}
 	int item = q->data[++(q->front)];
@@ -89,12 +89,12 @@ int main() {
 	return 0;
 }*/
 
-//5.2 ¿øÇüÅ¥ ÇÁ·Î±×·¥
+//5.2 ì›í˜•í í”„ë¡œê·¸ë¨
 
 
 /*
 
-// ===== ¿øÇüÅ¥ ÄÚµå ½ÃÀÛ======
+// ===== ì›í˜•í ì½”ë“œ ì‹œì‘======
 #define MAX_QUEUE_SIZE 5
 typedef int element;
 typedef struct {
@@ -102,28 +102,28 @@ typedef struct {
 	int front, rear;
 } QueueType;
 
-// ¿À·ù ÇÔ¼ö
+// ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
 }
 
-//Å¥ ÃÊ±âÈ¸ ÇÔ¼ö
+//í ì´ˆê¸°íšŒ í•¨ìˆ˜
 void init_queue(QueueType* q) {
 	q->front = q->rear = 0;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(QueueType* q) {
 	return (q->front == q->rear);
 }
 
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(QueueType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q->front);
 }
 
-// ¿øÇüÅ¥ Ãâ·Â ÇÔ¼ö
+// ì›í˜•í ì¶œë ¥ í•¨ìˆ˜
 void queue_print(QueueType* q) {
 	printf("QUEUE(front=%d rear=%d) = ", q->front, q->rear);
 	if (!is_empty(q)) {
@@ -138,54 +138,54 @@ void queue_print(QueueType* q) {
 	printf("\n");
 }
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void enqueue(QueueType* q, element item) {
 	if (is_full(q)) {
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	}
 	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
 	q->data[q->rear] = item;
 }
 
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 element dequeue(QueueType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
 	return q->data[q->front];
 }
 
 
 
-// ====== ¿øÇüÅ¥ ÄÚµå ³¡ =====
+// ====== ì›í˜•í ì½”ë“œ ë =====
 int main() {
 	QueueType queue;
 	int element;
 
 	init_queue(&queue);
-	printf("--µ¥ÀÌÅÍ Ãß°¡ ´Ü°è--\n");
+	printf("--ë°ì´í„° ì¶”ê°€ ë‹¨ê³„--\n");
 	while (!is_full(&queue)) {
-		printf("Á¤¼ö¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
+		printf("ì •ìˆ˜ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
 		scanf("%d", &element);
 		enqueue(&queue, element);
 		queue_print(&queue);
 	}
-	printf("Å¥´Â Æ÷È­»óÅÂÀÔ´Ï´Ù.\n\n");
+	printf("íëŠ” í¬í™”ìƒíƒœì…ë‹ˆë‹¤.\n\n");
 
-	printf("--µ¥ÀÌÅÍ »èÁ¦ ´Ü°è--\n");
+	printf("--ë°ì´í„° ì‚­ì œ ë‹¨ê³„--\n");
 	while (!is_empty(&queue)) {
 		element = dequeue(&queue);
-		printf("²¨³»Áø Á¤¼ö : %d \n", element);
+		printf("êº¼ë‚´ì§„ ì •ìˆ˜ : %d \n", element);
 		queue_print(&queue);
 	}
-	printf("Å¥´Â °ø¹é»óÅÂÀÔ´Ï´Ù.\n");
+	printf("íëŠ” ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.\n");
 
 	return 0;
 }
 
 */
 
-//5.3 Å¥ ÀÀ¿ë ÇÁ·Î±×·¥
+//5.3 í ì‘ìš© í”„ë¡œê·¸ë¨
 
 /*
 #define MAX_QUEUE_SIZE 5
@@ -195,28 +195,28 @@ typedef struct {
 	int front, rear;
 } QueueType;
 
-// ¿À·ù ÇÔ¼ö
+// ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
 }
 
-//Å¥ ÃÊ±âÈ­ ÇÔ¼ö
+//í ì´ˆê¸°í™” í•¨ìˆ˜
 void init_queue(QueueType* q) {
 	q->front = q->rear = 0;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(QueueType* q) {
 	return (q->front == q->rear);
 }
 
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(QueueType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q->front);
 }
 
-// ¿øÇüÅ¥ Ãâ·Â ÇÔ¼ö
+// ì›í˜•í ì¶œë ¥ í•¨ìˆ˜
 void queue_print(QueueType* q) {
 	printf("QUEUE(front=%d rear=%d) = ", q->front, q->rear);
 	if (!is_empty(q)) {
@@ -231,19 +231,19 @@ void queue_print(QueueType* q) {
 	printf("\n");
 }
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void enqueue(QueueType* q, element item) {
 	if (is_full(q)) {
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	}
 	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
 	q->data[q->rear] = item;
 }
 
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 element dequeue(QueueType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
 	return q->data[q->front];
 }
@@ -269,7 +269,7 @@ int main() {
 	return 0;
 }*/
 
-// ÇÁ·Î±×·¥ 5.4 ¿øÇü µ¦(deque) ÇÁ·Î±×·¥
+// í”„ë¡œê·¸ë¨ 5.4 ì›í˜• ë±(deque) í”„ë¡œê·¸ë¨
 
 /*
 #define MAX_QUEUE_SIZE 5
@@ -280,28 +280,28 @@ typedef struct {
 	int front, rear;
 } DequeType;
 
-// ¿À·ù ÇÔ¼ö
+// ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
 }
 
-// ÃÊ±âÈ­
+// ì´ˆê¸°í™”
 void init_deque(DequeType* q) {
 	q->front = q->rear = 0;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(DequeType* q) {
 	return (q->front == q->rear);
 }
 
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(DequeType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q->front);
 }
 
-// ¿øÇüÅ¥ Ãâ·Â ÇÔ¼ö
+// ì›í˜•í ì¶œë ¥ í•¨ìˆ˜
 void deque_print(DequeType* q) {
 	printf("DEQUE(front=%d, rear=%d) = ", q->front, q->rear);
 	if (!is_empty(q)) {
@@ -316,32 +316,32 @@ void deque_print(DequeType* q) {
 	printf("\n");
 }
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void add_rear(DequeType* q, element item) {
 	if (is_full(q))
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
 	q->data[q->rear] = item;
 }
 
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 element delete_front(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤");
 	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
 	return q->data[q->front];
 }
 
-// ÃßÃâ ÇÔ¼ö
+// ì¶”ì¶œ í•¨ìˆ˜
 element get_front(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤");
 	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
 
 void add_front(DequeType* q, element val) {
 	if (is_full(q))
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	q->data[q->front] = val;
 	q->front = (q->front - 1 + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
 }
@@ -349,14 +349,14 @@ void add_front(DequeType* q, element val) {
 element delete_rear(DequeType* q) {
 	int prev = q->rear;
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	q->rear = (q->rear - 1 + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
 	return q->data[prev];
 }
 
 element get_rear(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	return q->data[q->rear];
 }
 
@@ -376,7 +376,7 @@ int main() {
 	return 0;
 }*/
 
-// 5.5 ÀºÇà ¼­ºñ½º ½Ã¹Ä·¹ÀÌ¼Ç ÇÁ·Î±×·¥
+// 5.5 ì€í–‰ ì„œë¹„ìŠ¤ ì‹œë®¬ë ˆì´ì…˜ í”„ë¡œê·¸ë¨
 
 /*
 #define MAX_QUEUE_SIZE 5
@@ -391,41 +391,41 @@ typedef struct {
 	int front, rear;
 } QueueType;
 
-// ¿À·ù ÇÔ¼ö
+// ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
 }
 
-//Å¥ ÃÊ±âÈ¸ ÇÔ¼ö
+//í ì´ˆê¸°íšŒ í•¨ìˆ˜
 void init_queue(QueueType* q) {
 	q->front = q->rear = 0;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(QueueType* q) {
 	return (q->front == q->rear);
 }
 
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(QueueType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q->front);
 }
 
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void enqueue(QueueType* q, element item) {
 	if (is_full(q)) {
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	}
 	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
 	q->data[q->rear] = item;
 }
 
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 element dequeue(QueueType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
 	return q->data[q->front];
 }
@@ -442,18 +442,18 @@ int main() {
 
 	srand(time(NULL));
 	for (int clock = 0; clock < minutes; clock++) {
-		printf("ÇöÀç½Ã°¢=%d\n", clock);
-		if ((rand() % 10) < 3) { // ·£´ıÇÑ ½Ã°¢¿¡ »õ·Î¿î °í°´ÀÌ µé¾î¿È
+		printf("í˜„ì¬ì‹œê°=%d\n", clock);
+		if ((rand() % 10) < 3) { // ëœë¤í•œ ì‹œê°ì— ìƒˆë¡œìš´ ê³ ê°ì´ ë“¤ì–´ì˜´
 			element customer;
 			customer.id = total_customer++;
 			customer.arrival_time = clock;
 			customer.service_time = rand() % 3 + 1;
 			enqueue(&queue, customer);
-			printf("°í°´ %dÀÌ %dºĞ¿¡ µé¾î¿É´Ï´Ù. ¾÷¹«Ã³¸®½Ã°£= %dºĞ\n", customer.id, customer.arrival_time, customer.service_time);
+			printf("ê³ ê° %dì´ %dë¶„ì— ë“¤ì–´ì˜µë‹ˆë‹¤. ì—…ë¬´ì²˜ë¦¬ì‹œê°„= %dë¶„\n", customer.id, customer.arrival_time, customer.service_time);
 		}
 
 		if (service_time > 0) {
-			printf("°í°´ %d ¾÷¹«Ã³¸®ÁßÀÔ´Ï´Ù. \n", service_customer);
+			printf("ê³ ê° %d ì—…ë¬´ì²˜ë¦¬ì¤‘ì…ë‹ˆë‹¤. \n", service_customer);
 			service_time--;
 		}
 		else { // service_time == 0
@@ -461,19 +461,19 @@ int main() {
 				element customer = dequeue(&queue);
 				service_customer = customer.id;
 				service_time = customer.service_time;
-				printf("°í°´ %dÀÌ %dºĞ¿¡ ¾÷¹«¸¦ ½ÃÀÛÇÕ´Ï´Ù. ´ë±â½Ã°£Àº %dºĞÀÌ¾ú½À´Ï´Ù.\n",
+				printf("ê³ ê° %dì´ %dë¶„ì— ì—…ë¬´ë¥¼ ì‹œì‘í•©ë‹ˆë‹¤. ëŒ€ê¸°ì‹œê°„ì€ %dë¶„ì´ì—ˆìŠµë‹ˆë‹¤.\n",
 					customer.id, clock, clock - customer.arrival_time);
 				total_wait += clock - customer.arrival_time;
 			}
 		}
 	}
-	printf("ÀüÃ¼ ´ë±â ½Ã°£ = %dºĞ \n", total_wait);
+	printf("ì „ì²´ ëŒ€ê¸° ì‹œê°„ = %dë¶„ \n", total_wait);
 
 	return 0;
 }
 */
 
-// ¿¬½À¹®Á¦ 8.
+// ì—°ìŠµë¬¸ì œ 8.
 
 
 /*
@@ -484,52 +484,52 @@ typedef struct {
 	int front, rear;
 } QueueType;
 
-//¿À·ù ÇÔ¼ö
+//ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
 }
 
-// ÃÊ±âÈ­ ÇÔ¼ö
+// ì´ˆê¸°í™” í•¨ìˆ˜
 void init_queue(QueueType* q) {
 	q->front = q->rear = 0;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(QueueType* q) {
 	return (q->front == q->rear);
 }
 
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(QueueType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q->front);
 }
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void enqueue(QueueType* q, element item) {
 	if (is_full(q))
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
 	q->data[q->rear] = item;
 }
 
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 element dequeue(QueueType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
 	return q->data[q->front];
 }
 
-// »Ì±â ÇÔ¼ö
+// ë½‘ê¸° í•¨ìˆ˜
 element peek(QueueType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
 
 
-// Å¥¿¡ Á¸ÀçÇÏ´Â ¿ä¼ÒÀÇ °³¼ö¸¦ ¹İÈ¯ //1. ¹İº¹¹® È°¿ë
+// íì— ì¡´ì¬í•˜ëŠ” ìš”ì†Œì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜ //1. ë°˜ë³µë¬¸ í™œìš©
 int get_count(QueueType* q) {
 	int num = 0;
 	int i = q->front;
@@ -541,7 +541,7 @@ int get_count(QueueType* q) {
 }
 */
 
-// Å¥¿¡ Á¸ÀçÇÏ´Â ¿ä¼ÒÀÇ °³¼ö¸¦ ¹İÈ¯ 2. Á¶°Ç¹® È°¿ë -> ´õ ¼º´ÉÀÌ ¿ì¼ö
+// íì— ì¡´ì¬í•˜ëŠ” ìš”ì†Œì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜ 2. ì¡°ê±´ë¬¸ í™œìš© -> ë” ì„±ëŠ¥ì´ ìš°ìˆ˜
 /*
 int get_count(QueueType* q) {
 	if (q->rear >= q->front)
@@ -552,7 +552,7 @@ int get_count(QueueType* q) {
 
 */
 
-// ¿¬½À¹®Á¦ 9.
+// ì—°ìŠµë¬¸ì œ 9.
 
 /*
 #define MAX_STACK_SIZE 100
@@ -564,55 +564,55 @@ typedef struct {
 
 } StackType;
 
-//½ºÅÃ ÃÊ±âÈ­ ÇÔ¼ö
+//ìŠ¤íƒ ì´ˆê¸°í™” í•¨ìˆ˜
 void init_stack(StackType* s) {
 	s->top = -1;
 }
 
-//°ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+//ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(StackType* s) {
 	return (s->top == -1);
 }
 
 
-//Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+//í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(StackType* s) {
 	return (s->top == (MAX_STACK_SIZE - 1));
 }
 
-//»ğÀÔ ÇÔ¼ö
+//ì‚½ì… í•¨ìˆ˜
 void push(StackType* s, element item) {
 	if (is_full(s)) {
-		fprintf(stderr, "½ºÅÃ Æ÷È­ ¿¡·¯\n");
+		fprintf(stderr, "ìŠ¤íƒ í¬í™” ì—ëŸ¬\n");
 		return;
 	}
 	else s->data[++(s->top)] = item;
 }
 
-//»èÁ¦ ÇÔ¼ö
+//ì‚­ì œ í•¨ìˆ˜
 element pop(StackType* s) {
 	if (is_empty(s)) {
-		fprintf(stderr, "½ºÅÃ °ø¹é ¿¡·¯\n");
+		fprintf(stderr, "ìŠ¤íƒ ê³µë°± ì—ëŸ¬\n");
 		exit(1);
 	}
 	else return s->data[(s->top)--];
 }
 
-//ÇÇÅ© ÇÔ¼ö
+//í”¼í¬ í•¨ìˆ˜
 element peek(StackType* s) {
 	if (is_empty(s)) {
-		fprintf(stderr, "½ºÅÃ °ø¹é ¿¡·¯ \n");
+		fprintf(stderr, "ìŠ¤íƒ ê³µë°± ì—ëŸ¬ \n");
 		exit(1);
 	}
 	else return s->data[s->top];
 }
 
-StackType stack1; // ÀÔ·Â ½ºÅÃ
-StackType stack2; // Ãâ·Â ½ºÅÃ
+StackType stack1; // ì…ë ¥ ìŠ¤íƒ
+StackType stack2; // ì¶œë ¥ ìŠ¤íƒ
 
 void queue_input(StackType* s, element item) {
 	if(is_full(s)) {
-		fprintf(stderr, "½ºÅÃ Æ÷È­ ¿¡·¯\n");
+		fprintf(stderr, "ìŠ¤íƒ í¬í™” ì—ëŸ¬\n");
 		return;
 	}
 
@@ -638,7 +638,7 @@ int main() {
 	return 0;
 }*/
 
-// ¿¬½À¹®Á¦ 10.
+// ì—°ìŠµë¬¸ì œ 10.
 
 /*
 
@@ -649,51 +649,51 @@ typedef struct {
 	int front, rear;
 } QueueType;
 
-//¿À·ù ÇÔ¼ö
+//ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
 }
 
-// ÃÊ±âÈ­ ÇÔ¼ö
+// ì´ˆê¸°í™” í•¨ìˆ˜
 void init_queue(QueueType* q) {
 	q->front = q->rear = 0;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(QueueType* q) {
 	return (q->front == q->rear);
 }
 
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(QueueType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q->front);
 }
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void enqueue(QueueType* q, element item) {
 	if (is_full(q))
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
 	q->data[q->rear] = item;
 }
 
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 element dequeue(QueueType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
 	return q->data[q->front];
 }
 
-// »Ì±â ÇÔ¼ö
+// ë½‘ê¸° í•¨ìˆ˜
 element peek(QueueType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
 
-int cal_Fibonacci(int num) { // ÇÇº¸³ªÄ¡ ¼ö¿­ num Ç×À» return 
+int cal_Fibonacci(int num) { // í”¼ë³´ë‚˜ì¹˜ ìˆ˜ì—´ num í•­ì„ return 
 
 	QueueType queue;
 	init_queue(&queue);
@@ -726,7 +726,7 @@ int main() {
 
 */
 
-// ¿¬½À¹®Á¦ 11.
+// ì—°ìŠµë¬¸ì œ 11.
 
 /*
 #define MAX_QUEUE_SIZE 5
@@ -737,53 +737,53 @@ typedef struct {
 	int front, rear;
 } DequeType;
 
-// ¿À·ù ÇÔ¼ö
+// ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
 }
 
-// ÃÊ±âÈ­
+// ì´ˆê¸°í™”
 void init_deque(DequeType* q) {
 	q->front = q->rear = 0;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(DequeType* q) {
 	return (q->front == q->rear);
 }
 
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(DequeType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q->front);
 }
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void add_rear(DequeType* q, element item) {
 	if (is_full(q))
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
 	q->data[q->rear] = item;
 }
 
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 element delete_front(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤");
 	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
 	return q->data[q->front];
 }
 
-// ÃßÃâ ÇÔ¼ö
+// ì¶”ì¶œ í•¨ìˆ˜
 element get_front(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤");
 	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
 
 void add_front(DequeType* q, element val) {
 	if (is_full(q))
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	q->data[q->front] = val;
 	q->front = (q->front - 1 + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
 }
@@ -791,14 +791,14 @@ void add_front(DequeType* q, element val) {
 element delete_rear(DequeType* q) {
 	int prev = q->rear;
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	q->rear = (q->rear - 1 + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
 	return q->data[prev];
 }
 
 element get_rear(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	return q->data[q->rear];
 }
 
@@ -825,7 +825,7 @@ int main() {
 	int pivot = 1;
 	DequeType deque;
 	init_deque(&deque);
-	printf("¹®ÀÚ¿­À» ÀÔ·ÂÇÏ½Ã¿À : ");
+	printf("ë¬¸ìì—´ì„ ì…ë ¥í•˜ì‹œì˜¤ : ");
 	gets(str);
 
 	for (int i = 0; i < strlen(str); i++) {
@@ -837,7 +837,7 @@ int main() {
 	while (!is_empty(&deque)) {
 
 		if (get_rear(&deque) != delete_front(&deque)) {
-			printf("È¸¹®ÀÌ ¾Æ´Õ´Ï´Ù.\n");
+			printf("íšŒë¬¸ì´ ì•„ë‹™ë‹ˆë‹¤.\n");
 			pivot = 0;
 			break;
 		}
@@ -846,14 +846,14 @@ int main() {
 		delete_rear(&deque);
 
 	}
-	if (pivot == 1) printf("È¸¹®ÀÔ´Ï´Ù.\n");
+	if (pivot == 1) printf("íšŒë¬¸ì…ë‹ˆë‹¤.\n");
 
 
 	return 0;
 }*/
 
 
-// ¿¬½À¹®Á¦ 12.
+// ì—°ìŠµë¬¸ì œ 12.
 
 #define MAX_QUEUE_SIZE 10
 
@@ -868,54 +868,54 @@ typedef struct {
 	int front, rear;
 } DequeType;
 
-// ¿À·ù ÇÔ¼ö
+// ì˜¤ë¥˜ í•¨ìˆ˜
 void error(char* message) {
 	fprintf(stderr, "%s\n", message);
 	exit(1);
 }
 
-// ÃÊ±âÈ­
+// ì´ˆê¸°í™”
 void init_deque(DequeType* q) {
 	q->front = q->rear = 0;
 }
 
-// °ø¹é »óÅÂ °ËÃâ ÇÔ¼ö
+// ê³µë°± ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_empty(DequeType* q) {
 	return (q->front == q->rear);
 }
 
-// Æ÷È­ »óÅÂ °ËÃâ ÇÔ¼ö
+// í¬í™” ìƒíƒœ ê²€ì¶œ í•¨ìˆ˜
 int is_full(DequeType* q) {
 	return ((q->rear + 1) % MAX_QUEUE_SIZE == q->front);
 }
 
 
-// »ğÀÔ ÇÔ¼ö
+// ì‚½ì… í•¨ìˆ˜
 void add_rear(DequeType* q, task item) {
 	if (is_full(q))
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	q->rear = (q->rear + 1) % MAX_QUEUE_SIZE;
 	q->data[q->rear] = item;
 }
 
-// »èÁ¦ ÇÔ¼ö
+// ì‚­ì œ í•¨ìˆ˜
 task delete_front(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤");
 	q->front = (q->front + 1) % MAX_QUEUE_SIZE;
 	return q->data[q->front];
 }
 
-// ÃßÃâ ÇÔ¼ö
+// ì¶”ì¶œ í•¨ìˆ˜
 task get_front(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤");
 	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
 
 void add_front(DequeType* q, task val) {
 	if (is_full(q))
-		error("Å¥°¡ Æ÷È­»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ í¬í™”ìƒíƒœì…ë‹ˆë‹¤.");
 	q->data[q->front] = val;
 	q->front = (q->front - 1 + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
 }
@@ -923,21 +923,21 @@ void add_front(DequeType* q, task val) {
 task delete_rear(DequeType* q) {
 	int prev = q->rear;
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	q->rear = (q->rear - 1 + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
 	return q->data[prev];
 }
 
 task get_rear(DequeType* q) {
 	if (is_empty(q))
-		error("Å¥°¡ °ø¹é»óÅÂÀÔ´Ï´Ù.");
+		error("íê°€ ê³µë°±ìƒíƒœì…ë‹ˆë‹¤.");
 	return q->data[q->rear];
 }
 
 void running_task(DequeType* q) {
 	q->data[(q->front + 1) % MAX_QUEUE_SIZE].task_time--;
 	if (q->data[(q->front + 1) % MAX_QUEUE_SIZE].task_time == 0) {
-		printf("task%dÀÇ ¼öÇàÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.\n", q->data[(q->front + 1) % MAX_QUEUE_SIZE].task_num);
+		printf("task%dì˜ ìˆ˜í–‰ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n", q->data[(q->front + 1) % MAX_QUEUE_SIZE].task_num);
 		delete_front(q);
 	}
 }
@@ -963,14 +963,14 @@ void A_steal_algorithm(DequeType *stealer, DequeType *victim1, DequeType *victim
 
 	if (task_num_vic1 < 2 && task_num_vic2 < 2) return;
 	if (task_num_vic1 >= 2 && task_num_vic2 < 2) {
-		printf("stealer°¡ victim1ÀÇ task%d¸¦ »©¾Ò½À´Ï´Ù\n", victim1->data[victim1->rear].task_num);
+		printf("stealerê°€ victim1ì˜ task%dë¥¼ ë¹¼ì•˜ìŠµë‹ˆë‹¤\n", victim1->data[victim1->rear].task_num);
 		tmp = delete_rear(victim1);
 		add_rear(stealer, tmp);
 		return;
 	}
 
 	if (task_num_vic1 < 2 && task_num_vic2 >= 2) {
-		printf("stealer°¡ victim2ÀÇ task%d¸¦ »©¾Ò½À´Ï´Ù\n", victim2->data[victim2->rear].task_num);
+		printf("stealerê°€ victim2ì˜ task%dë¥¼ ë¹¼ì•˜ìŠµë‹ˆë‹¤\n", victim2->data[victim2->rear].task_num);
 		tmp = delete_rear(victim2);
 		add_rear(stealer, tmp);
 		return;
@@ -978,21 +978,21 @@ void A_steal_algorithm(DequeType *stealer, DequeType *victim1, DequeType *victim
 
 	do {
 		tmp_front1 = (tmp_front1 + 1) % MAX_QUEUE_SIZE;
-		total_run_time_1 = victim1->data[tmp_front1].task_time;
+		total_run_time_1 += victim1->data[tmp_front1].task_time;
 	} while (tmp_front1 != victim1->rear);
 
 	do {
 		tmp_front2 = (tmp_front2 + 1) % MAX_QUEUE_SIZE;
-		total_run_time_2 = victim2->data[tmp_front2].task_time;
+		total_run_time_2 += victim2->data[tmp_front2].task_time;
 	} while (tmp_front2 != victim2->rear);
 
 	if (total_run_time_1 >= total_run_time_2) {
-		printf("stealer°¡ victim1ÀÇ task%d¸¦ »©¾Ò½À´Ï´Ù\n",victim1->data[victim1->rear].task_num);
+		printf("stealerê°€ victim1ì˜ task%dë¥¼ ë¹¼ì•˜ìŠµë‹ˆë‹¤\n",victim1->data[victim1->rear].task_num);
 		tmp = delete_rear(victim1);
 		add_rear(stealer, tmp);
 	}
 	else {
-		printf("stealer°¡ victim2ÀÇ task%d¸¦ »©¾Ò½À´Ï´Ù\n", victim2->data[victim2->rear].task_num);
+		printf("stealerê°€ victim2ì˜ task%dë¥¼ ë¹¼ì•˜ìŠµë‹ˆë‹¤\n", victim2->data[victim2->rear].task_num);
 		tmp = delete_rear(victim2);
 		add_rear(stealer, tmp);
 	}
@@ -1001,8 +1001,8 @@ void A_steal_algorithm(DequeType *stealer, DequeType *victim1, DequeType *victim
 
 
 
-// CPU1, CPU2, CPU3 ÀÌ ÀÖ´Ù°í °¡Á¤
-//  3 ,   5,    7  ÀÇ ¼öÇà½Ã°£ÀÌ °É¸®´Â ÀÛ¾÷À» °¢°¢ 4°³¾¿ ¹èÁ¤¹ŞÀ½
+// CPU1, CPU2, CPU3 ì´ ìˆë‹¤ê³  ê°€ì •
+//  3 ,   5,    7  ì˜ ìˆ˜í–‰ì‹œê°„ì´ ê±¸ë¦¬ëŠ” ì‘ì—…ì„ ê°ê° 4ê°œì”© ë°°ì •ë°›ìŒ
 
 
 int main() {
@@ -1015,7 +1015,7 @@ int main() {
 	init_deque(&CPU2);
 	init_deque(&CPU3);
 	
-// Task »ğÀÔ
+// Task ì‚½ì…
 	for (int i = 0; i < 12; i++) {
 		switch (i / 4) {
 		case 0:
@@ -1037,7 +1037,7 @@ int main() {
 		}	
 	}
 
-// ÀÛ¾÷ ½ÃÀÛ
+// ì‘ì—… ì‹œì‘
 
 	for (int i = 0; i < 100; i++) {
 		running_task(&CPU1);
@@ -1057,7 +1057,7 @@ int main() {
 		
 
 		if (is_empty(&CPU1) && is_empty(&CPU2) && is_empty(&CPU3)) {
-			printf("¸ğµç CPU¿¡¼­ÀÇ ¸ğµç ÀÛ¾÷ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù!\n");
+			printf("ëª¨ë“  CPUì—ì„œì˜ ëª¨ë“  ì‘ì—…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤!\n");
 			break;
 		}
 	}
